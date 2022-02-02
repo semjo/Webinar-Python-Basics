@@ -9,3 +9,5 @@ with open("Numbers", "w") as file_num:
 
 with open("Numbers") as file_num:
     string = file_num.read().rstrip().split()
+    sum_numbers = list(map(int, string))
+    print("Сумма чисел в файле составила: ", sum(sum_numbers))

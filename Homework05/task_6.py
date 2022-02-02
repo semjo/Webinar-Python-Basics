@@ -6,11 +6,12 @@
     Необязательно, чтобы для каждого предмета были все типы занятий.
     Сформировать словарь, содержащий название предмета и общее количество занятий по нему.
     Вывести его на экран.
-
-    Примеры строк файла:
-        Информатика: 100(л) 50(пр) 20(лаб).
-        Физика: 30(л) — 10(лаб)
-        Физкультура: — 30(пр) —
-    Пример словаря:
-        {“Информатика”: 170, “Физика”: 40, “Физкультура”: 30}
 """
+report_dict = {}
+with open("Report", "r", encoding="utf-8") as report_text:
+    for string in report_text:
+        academic_subject, *str_subjects = string.split()
+        int_subjects = [int(value.rstrip('(л)(пр)(лаб)')) for value in str_subjects if value != "-"]
+        report_dict.update({academic_subject.rstrip(":"): sum(int_subjects)})
+
+    print(report_dict)
